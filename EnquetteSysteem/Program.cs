@@ -1,5 +1,7 @@
 ﻿using Npgsql;
 using Terminal.Gui;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace EnquetteSysteem;
 
@@ -7,10 +9,16 @@ class Program
 {
     static void Main(string[] args)
     {
+        var config =
+    new ConfigurationBuilder()
+        .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+        .AddJsonFile("appsettings.json", false)
+        .Build();
         Application.Init();
         Application.QuitKey = Key.Q.WithCtrl;
+        File.WriteAllLines("log.txt", config.GetChildren().Select(c => $"{c.Key}: {c.Value}").ToArray());
         NpgsqlConnection conn = new NpgsqlConnection(
-            "User ID=postgres;Host=localhost;Database=StationsApp;Password=postgres"
+            $"User ID={config["Database:User"]};Host={config["Database:Host"]};Database={config["Database:Name"]};Password={config["Database:Password"]}"
         );
         StationSelectionWindow stationSelectionWindow = new StationSelectionWindow(
             "Station Selection",
