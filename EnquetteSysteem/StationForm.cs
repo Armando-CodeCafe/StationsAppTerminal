@@ -163,7 +163,7 @@ public class StationForm : Window
         }
         m_Connection.Open();
         NpgsqlCommand command = new NpgsqlCommand(
-            "INSERT INTO UserFeedback(name,message,feedback,date) VALUES (@name,@message,@feedback,@date)",
+            "INSERT INTO UserFeedback(name,message,feedback,date,stationId) VALUES (@name,@message,@feedback,@date,@stationid)",
             m_Connection
         );
         command.Parameters.Add(
@@ -172,6 +172,7 @@ public class StationForm : Window
         command.Parameters.Add(new NpgsqlParameter("@message", message.Text));
         command.Parameters.Add(new NpgsqlParameter("@feedback", feedback.Text));
         command.Parameters.Add(new NpgsqlParameter("@date", DateTime.Now));
+        command.Parameters.Add(new NpgsqlParameter("@stationid", m_StationId));
         bool res = false;
 
         try

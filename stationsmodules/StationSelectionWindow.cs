@@ -65,7 +65,6 @@ public class StationSelectionWindow : Window
                 {
                     StationId = m_Stations.Keys.ToArray()[dropdown.SelectedItem];
                     StationName = m_Stations[StationId];
-
                     RequestStop();
                 }
                 catch (IndexOutOfRangeException)
