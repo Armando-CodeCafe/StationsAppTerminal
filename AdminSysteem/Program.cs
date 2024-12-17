@@ -36,7 +36,8 @@ class Program
             AdminDashboard adminDashboard = new AdminDashboard(
                 "Admin Dashboard",
                 connection,
-                loggedIn
+                loggedIn,
+                stationId
             )
             { };
             Application.Run(adminDashboard);

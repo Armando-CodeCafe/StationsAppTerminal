@@ -7,9 +7,12 @@ public class AdminDashboard : Window
     FrameView m_MainWindow;
     Admin m_LoggedIn;
 
-    public AdminDashboard(string title, NpgsqlConnection connection, Admin admin)
+    long m_StationId;
+
+    public AdminDashboard(string title, NpgsqlConnection connection, Admin admin, long stationId)
     {
         m_LoggedIn = admin;
+        m_StationId = stationId;
         ColorScheme = Colors.ColorSchemes["Menu"];
         Title = title;
         m_Connection = connection;
@@ -60,7 +63,12 @@ public class AdminDashboard : Window
             switch (node)
             {
                 case TreeNode feedbackManagement:
-                    m_MainWindow = new FeedbackManagement("Feedback", m_Connection, m_LoggedIn);
+                    m_MainWindow = new FeedbackManagement(
+                        "Feedback",
+                        m_Connection,
+                        m_LoggedIn,
+                        m_StationId
+                    );
                     Add(m_MainWindow);
 
                     break;

@@ -7,12 +7,19 @@ public class FeedbackManagement : FrameView
     NpgsqlConnection m_Connection;
     Feedback m_NextFeedback;
     Admin m_LoggedIn;
+    long m_StationId;
 
-    public FeedbackManagement(string title, NpgsqlConnection connection, Admin loggedin)
+    public FeedbackManagement(
+        string title,
+        NpgsqlConnection connection,
+        Admin loggedin,
+        long stationid
+    )
     {
         m_LoggedIn = loggedin;
         Title = title;
         m_Connection = connection;
+        m_StationId = stationid;
         ColorScheme = Colors.ColorSchemes["Menu"];
         object timeout = null;
         Button backButton = new Button()
@@ -173,8 +180,9 @@ public class FeedbackManagement : FrameView
     {
         m_Connection.Open();
         string countQuery =
-            "SELECT COUNT(UserFeedback.Id) FROM UserFeedback LEFT JOIN UserFeedbackAdministrated ON UserFeedback.Id = UserFeedbackAdministrated.FeedbackId WHERE UserFeedbackAdministrated.FeedbackId IS NULL";
+            "SELECT COUNT(UserFeedback.Id) FROM UserFeedback LEFT JOIN UserFeedbackAdministrated ON UserFeedback.Id = UserFeedbackAdministrated.FeedbackId WHERE UserFeedbackAdministrated.FeedbackId IS NULL AND UserFeedback.StationId =@stationid";
         NpgsqlCommand countCommand = new NpgsqlCommand(countQuery, m_Connection);
+        countCommand.Parameters.AddWithValue("@stationid", m_StationId);
         long? count = (long?)countCommand.ExecuteScalar();
         if (count == 0)
         {

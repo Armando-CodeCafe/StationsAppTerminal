@@ -66,8 +66,8 @@ public class StationForm : Window
 
         TextView messageField = new TextView()
         {
-            X = Pos.Right(messageLabel),
-            Y = messageLabel.Y,
+            X = Pos.X(messageLabel),
+            Y = Pos.Bottom(messageLabel),
             Height = Dim.Auto(minimumContentDim: Dim.Percent(20)),
             Width = Dim.Fill(),
             WordWrap = true,

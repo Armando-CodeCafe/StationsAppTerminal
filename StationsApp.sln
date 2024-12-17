@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminSysteem", "AdminSystee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stationsmodules", "stationsmodules\stationsmodules.csproj", "{E3B251BA-898F-4DE7-ADA2-60DDEA874556}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationsScherm", "StationsScherm\StationsScherm.csproj", "{AC6D82B5-82CF-4456-BE2E-F6F8EE6168F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{E3B251BA-898F-4DE7-ADA2-60DDEA874556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3B251BA-898F-4DE7-ADA2-60DDEA874556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3B251BA-898F-4DE7-ADA2-60DDEA874556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6D82B5-82CF-4456-BE2E-F6F8EE6168F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6D82B5-82CF-4456-BE2E-F6F8EE6168F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6D82B5-82CF-4456-BE2E-F6F8EE6168F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6D82B5-82CF-4456-BE2E-F6F8EE6168F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
